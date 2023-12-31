@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&H TECH</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(image.jpg);
+    background-size: cover;
+    color: black;
+    animation: neonFlash 1s infinite alternate;
+  }
+
+  @keyframes neonFlash {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px yellow, 0 0 15px blue, 0 0 20px pink; }
+    100% { text-shadow: 0 0 5px pink, 0 0 10px blue, 0 0 15px yellow, 0 0 20px #fff; }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .logo {
+    width: 30vw;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .wishes {
+    font-weight: bold;
+    font-size: 3vw;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .details {
+    font-size: 2vw;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <img src="m&h.png" alt="M&H TECH Logo" class="logo">
+    <div class="wishes">Happy New Year!</div>
+    <div class="wishes">Wishing you a Happy New Year on behalf of M&H TECH! May the upcoming year bring you joy, success, and prosperity. Cheers to new beginnings and exciting opportunities! 🎉🥳</div>
+    <div class="details" id="timeDate"></div>
+  </div>
+
+  <script>
+    const now = new Date();
+    const time = now.toLocaleTimeString();
+    const date = now.toLocaleDateString();
+    document.getElementById('timeDate').textContent = `Time: ${time} | Date: ${date}`;
+  </script>
+</body>
+</html>

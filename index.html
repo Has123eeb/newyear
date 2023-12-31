@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: black;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  }
+
+  #countdown {
+    font-size: 5vw;
+    margin-bottom: 20px;
+  }
+
+  #dateTime {
+    font-size: 2vw;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div id="countdown">10</div>
+  <div id="dateTime"></div>
+
+  <script>
+    let count = 10;
+    let colors = ['#f00', '#00f', '#0f0', '#ff0', '#0ff', '#f0f', '#800080', '#FF4500', '#32CD32', '#4682B4'];
+    let colorIndex = 0;
+
+    function startCountdown() {
+      if (count >= 0) {
+        document.getElementById('countdown').textContent = count;
+        document.body.style.backgroundColor = colors[colorIndex];
+        colorIndex = (colorIndex + 1) % colors.length;
+        count--;
+      } else {
+        clearInterval(intervalId);
+        window.location.href = "next_page.html";
+      }
+    }
+
+    function updateTimeAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString();
+      const date = now.toLocaleDateString();
+      document.getElementById('dateTime').textContent = `Current Time: ${time} | Current Date: ${date}`;
+
+      const midnight = new Date(now);
+      midnight.setHours(0, 0, 0, 0);
+      if (now.getTime() > midnight.getTime()) {
+        clearInterval(intervalId);
+        window.location.href = "next_page.html";
+      }
+    }
+
+    setInterval(startCountdown, 1000);
+    setInterval(updateTimeAndDate, 1000);
+  </script>
+</body>
+</html>
